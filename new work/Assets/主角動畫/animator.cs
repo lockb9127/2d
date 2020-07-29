@@ -10,6 +10,8 @@ public class animator : MonoBehaviour
     public AudioSource add;
     public Transform tran;
     public SpriteRenderer pa;
+    public Collider2D  attackbox;
+    public Collider  attackbox1;
 
 
  public void Tran()
@@ -24,7 +26,7 @@ public class animator : MonoBehaviour
          {
              
              pa.flipX=false;
-             gameObject.transform.position+=new Vector3(0.8f,0,0);
+             gameObject.transform.position+=new Vector3(1.9f,0,0);
          }
      }
      if(Input.GetKey(KeyCode.LeftArrow))
@@ -36,7 +38,7 @@ public class animator : MonoBehaviour
          {
               
              pa.flipX=true;
-             gameObject.transform.position+=new Vector3(-0.8f,0,0);
+             gameObject.transform.position+=new Vector3(-1.9f,0,0);
          }
      }
          
@@ -60,20 +62,14 @@ public class animator : MonoBehaviour
         bool key1 =Input.GetKeyDown(KeyCode.Z);
         Anim.SetBool("Attack2",key1);
         
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-          add.PlayOneShot(attack2);
-        }
+        
     }
     public void anim()
     {
 
         bool key =Input.GetKeyDown(KeyCode.Space);
         Anim.SetBool("攻擊",key);
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-          add.PlayOneShot(attack1,1);
-        }
+        
     }
     void Start()
     {
@@ -91,6 +87,27 @@ public class animator : MonoBehaviour
         
          
     }
+    public void play_audio()
+    {
+         add.PlayOneShot(attack2);
+    }
+
+    public void play_audio2()
+    {
+         add.PlayOneShot(attack1);
+          
+{
+    bool characterInQuicksand;
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        characterInQuicksand = false;
+    }
+}
         
-    
+           
+        
+            
+        
+
 }
